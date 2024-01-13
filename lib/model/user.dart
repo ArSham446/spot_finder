@@ -1,33 +1,33 @@
 class Patients {
-  String? UserUID;
-  String? UserName;
-  String? UserEmail;
-  String? UserPhone;
-  String? UserAvatarUrl;
+  String? userUID;
+  String? userName;
+  String? userEmail;
+  String? userPhone;
+  String? userAvatarUrl;
 
   Patients({
-    this.UserUID,
-    this.UserName,
-    this.UserEmail,
-    this.UserPhone,
-    this.UserAvatarUrl,
+    this.userUID,
+    this.userName,
+    this.userEmail,
+    this.userPhone,
+    this.userAvatarUrl,
   });
 
   Patients.fromJson(Map<String, dynamic> json) {
-    UserUID = json["UserUID"];
-    UserName = json["UserName"];
-    UserEmail = json["UserEmail"];
-    UserPhone = json["UserPhone"];
-    UserAvatarUrl = json["UserAvatarUrl"];
+    userUID = json["UserUID"];
+    userName = json["UserName"];
+    userEmail = json["UserEmail"];
+    userPhone = json["UserPhone"];
+    userAvatarUrl = json["UserAvatarUrl"];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    data["UserUID"] = UserUID;
-    data["UserName"] = UserName;
-    data["UserEmail"] = UserEmail;
-    data["UserPhone"] = UserPhone;
-    data["UserAvatarUrl"] = UserAvatarUrl;
+    data["UserUID"] = userUID;
+    data["UserName"] = userName;
+    data["UserEmail"] = userEmail;
+    data["UserPhone"] = userPhone;
+    data["UserAvatarUrl"] = userAvatarUrl;
     return data;
   }
 }

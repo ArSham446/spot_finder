@@ -9,13 +9,12 @@ import 'package:spot_finder/splash_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print(
+  debugPrint(
       "Customers App ///// Handling a background message: ${message.messageId}");
-  print("Handling a background message: ${message.notification!.title}");
-  print("Handling a background message: ${message.notification!.body}");
-  print("Handling a background message: ${message.data}");
-  print(
-      "Customers App ///// Handling a background message: ${message.data['key1']}");
+  debugPrint("Handling a background message: ${message.notification!.title}");
+  debugPrint("Handling a background message: ${message.notification!.body}");
+  debugPrint("Handling a background message: ${message.data}");
+  debugPrint("Customers App ///// Handling a background message: ${message.data['key1']}");
 }
 
 void main() async {

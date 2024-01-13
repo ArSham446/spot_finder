@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:spot_finder/services/notification_services.dart';
-import 'package:spot_finder/ui/bottomNavBar/homeScreen.dart';
+import 'package:spot_finder/ui/bottomNavBar/home_screen.dart';
 import 'package:spot_finder/ui/bottomNavBar/profle/profile.dart';
 import 'package:spot_finder/ui/bottomNavBar/upload/add_parking.dart';
 
@@ -12,14 +12,14 @@ class CustomerBottomNavBar extends StatefulWidget {
   const CustomerBottomNavBar({super.key});
 
   @override
-  _CustomerBottomNavBarState createState() => _CustomerBottomNavBarState();
+  CustomerBottomNavBarState createState() => CustomerBottomNavBarState();
 }
 
-class _CustomerBottomNavBarState extends State<CustomerBottomNavBar> {
+class CustomerBottomNavBarState extends State<CustomerBottomNavBar> {
   bool canPop = false;
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  // static const TextStyle optionStyle =
+  //     TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     AddParking(),
@@ -29,11 +29,11 @@ class _CustomerBottomNavBarState extends State<CustomerBottomNavBar> {
     debugPrint('Customers App ///// displayForegroundNotifications');
     // FirebaseMessaging.instance.getInitialMessage();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print('Customers App /////Got a message whilst in the foreground!');
-      print('Customers App ///// Message data: ${message.data}');
+      debugPrint('Customers App /////Got a message whilst in the foreground!');
+      debugPrint('Customers App ///// Message data: ${message.data}');
 
       if (message.notification != null) {
-        print(
+        debugPrint(
             'Customers App ///// Message also contained a notification: ${message.notification}');
         NotificationsServices.displayNotification(message);
       }

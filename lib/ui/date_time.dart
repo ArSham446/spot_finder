@@ -31,7 +31,7 @@ class DateTimePageState extends State<DateTimePage> {
     String token = '';
 
     try {
-      var doc = await FirebaseFirestore.instance
+       await FirebaseFirestore.instance
           .collection('Users')
           .doc(sid)
           .get()

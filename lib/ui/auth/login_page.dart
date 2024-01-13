@@ -26,7 +26,7 @@ class CustomerLogin extends StatefulWidget {
 class _CustomerLoginState extends State<CustomerLogin> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var obscureText = false;
 
   formValidation() {
