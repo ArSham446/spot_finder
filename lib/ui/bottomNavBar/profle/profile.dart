@@ -4,10 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spot_finder/controllers/home_controller.dart';
 import 'package:spot_finder/global/global.dart';
 import 'package:spot_finder/ui/auth/login_page.dart';
+import 'package:spot_finder/ui/booked_ticket.dart';
 import 'package:spot_finder/ui/favourute_screen.dart';
+import 'package:spot_finder/ui/history_screen.dart';
+import 'package:spot_finder/ui/ticket_view_screen.dart';
 import 'package:spot_finder/widgets/customListile.dart';
 import 'package:spot_finder/widgets/my_parks.dart';
-import 'package:spot_finder/widgets/ticket_view.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -69,6 +71,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onTap: () => Get.to(() => const MyTicketView()),
               child: CustomListile(
                   tileIcon: Icons.book_online, tileTitle: 'My Tckets')),
+          GestureDetector(
+              onTap: () => Get.to(() => const BookedTicket()),
+              child: CustomListile(
+                  tileIcon: Icons.book_online, tileTitle: 'Soled Tickets')),
+          GestureDetector(
+            onTap: () => Get.to(() => const HistoryScreen()),
+            child: CustomListile(
+              tileIcon: Icons.history,
+              tileTitle: 'History',
+            ),
+          ),
           // CustomListile(tileIcon: Icons.info, tileTitle: 'About'),
           SizedBox(
             height: size.height * 0.08,

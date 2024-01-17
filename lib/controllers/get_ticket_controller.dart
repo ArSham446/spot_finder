@@ -9,6 +9,7 @@ class GetTicketController extends GetxController {
   final TextEditingController outTimeController = TextEditingController();
   final TextEditingController vehicleController = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  TimeOfDay? outTime;
   int remainingCarSlots = 0;
   int remainingBikeSlots = 0;
   int remainingBycycleSlots = 0;
@@ -42,7 +43,8 @@ class GetTicketController extends GetxController {
       remainingBycycleSlots = parking['availableBycycleSlots'] - 1;
     }
     try {
-      await _firestore.collection('tickets').doc().set({
+      debugPrint('uploading to firebase');
+      var ref = await _firestore.collection('tickets').add({
         'bookingDate': dateController.text,
         'inTime': inTimeController.text,
         'outTime': outTimeController.text,
@@ -51,13 +53,18 @@ class GetTicketController extends GetxController {
         'parkingName': parking['parkingName'],
         'parkingAddress': parking['parkingAddress'],
         'customerId': firebaseAuth.currentUser!.uid,
+        'status': 'booked',
         'ownerId': parking['ownerId'],
+        'parkingId': parking['parkingId'],
+        'vehicleType': vehicleType,
+        // 'orignalOutTime': outTime!.toString(),
         'price': vehicleType == 'Book Car Slot'
             ? parking['carPrice']
             : vehicleType == 'Book Bike Slot'
                 ? parking['bikePrice']
                 : parking['bycyclePrice'],
       }).whenComplete(() async {
+        debugPrint('uploaded to firebase');
         await _firestore
             .collection('parkings')
             .doc(parking['parkingId'])
@@ -73,6 +80,11 @@ class GetTicketController extends GetxController {
                   : remainingBycycleSlots)
         });
       });
+      await _firestore
+          .collection('tickets')
+          .doc(ref.id)
+          .update({'ticketId': ref.id});
+      debugPrint(ref.id);
     } catch (e) {
       debugPrint(e.toString());
     }

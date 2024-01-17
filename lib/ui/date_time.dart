@@ -31,7 +31,7 @@ class DateTimePageState extends State<DateTimePage> {
     String token = '';
 
     try {
-       await FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('Users')
           .doc(sid)
           .get()
@@ -132,6 +132,7 @@ class DateTimePageState extends State<DateTimePage> {
     String period = '';
     int hour = 0;
     if (picked != null) {
+      getTicketController.outTime = picked;
       period = picked.hour >= 12 ? 'PM' : 'AM';
       hour = picked.hour > 12 ? picked.hour - 12 : picked.hour;
       getTicketController.outTimeController.text =

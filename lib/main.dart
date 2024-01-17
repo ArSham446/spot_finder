@@ -69,4 +69,4 @@ class _SpotFinderAppState extends State<SpotFinderApp> {
           home: const SplashScreen()),
     );
   }
-}
+ }

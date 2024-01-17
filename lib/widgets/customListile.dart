@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomListile extends StatelessWidget {
-
   IconData? tileIcon;
   String? tileTitle;
-  var tileOnTap;
+  Function()? tileOnTap;
 
   CustomListile({
+    super.key,
     required this.tileIcon,
     required this.tileTitle,
     this.tileOnTap,
-});
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,16 @@ class CustomListile extends StatelessWidget {
       child: InkWell(
         onTap: tileOnTap,
         child: ListTile(
-          leading: Icon(tileIcon, color: Colors.black,),
+          leading: Icon(
+            tileIcon,
+            color: Colors.black,
+          ),
           title: Text(tileTitle!),
-          trailing: const Icon(Icons.arrow_forward_ios, color: Colors.black, size: 20,),
+          trailing: const Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.black,
+            size: 20,
+          ),
         ),
       ),
     );
